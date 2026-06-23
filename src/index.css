@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Tipografía */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* Colores Semánticos Premium */
+  --color-primary: #3b82f6;      /* Azul vibrante principal */
+  --color-primary-hover: #2563eb; 
+  
+  --color-secondary: #0ea5e9;    /* Turquesa/Cian de soporte */
+  --color-secondary-hover: #0284c7;
+
+  --color-accent: #f43f5e;       /* Rosa/Magenta para gráficos y alertas (estilo SHAP) */
+  --color-accent-hover: #e11d48;
+
+  --color-success: #10b981;      /* Verde para resultados Normales */
+  --color-warning: #f59e0b;      /* Amarillo para Riesgo Leve */
+  --color-danger: #ef4444;       /* Rojo para Riesgo Alto */
+
+  --color-background: #f8fafc;   /* Gris ultra suave con toque azulado para el fondo global */
+  --color-surface: #ffffff;      /* Blanco puro para tarjetas */
+  
+  --color-text-main: #0f172a;    /* Casi negro para títulos legibles */
+  --color-text-muted: #64748b;   /* Gris para subtítulos y notas */
+  --color-border: #e2e8f0;       /* Bordes muy sutiles */
+}
+
+/* Reseteo básico y aplicación de estilos globales */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+}
