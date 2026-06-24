@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -7,19 +7,20 @@ import api from '../../services/api';
 
 registerLocale('es', es);
 
-interface NewStudentModalProps {
+interface EditStudentModalProps {
+  student: any;
   onClose: () => void;
   onSuccess: () => void;
 }
 
-export default function NewStudentModal({ onClose, onSuccess }: NewStudentModalProps) {
-  const [nombres, setNombres] = useState('');
-  const [apellidos, setApellidos] = useState('');
-  const [fechaNacimiento, setFechaNacimiento] = useState('');
-  const [genero, setGenero] = useState('M');
-  const [lateralidad, setLateralidad] = useState('Derecha');
+export default function EditStudentModal({ student, onClose, onSuccess }: EditStudentModalProps) {
+  const [nombres, setNombres] = useState(student?.nombres || '');
+  const [apellidos, setApellidos] = useState(student?.apellidos || '');
+  const [fechaNacimiento, setFechaNacimiento] = useState(student?.fecha_nacimiento || '');
+  const [genero, setGenero] = useState('M'); // Backend doesnt have genero yet but keeping UI intact
+  const [lateralidad, setLateralidad] = useState(student?.lateralidad === 'ZURDO' ? 'Izquierda' : student?.lateralidad === 'AMBIDIESTRO' ? 'Ambidextro' : 'Derecha');
   const [tieneCorreccionVisual, setTieneCorreccionVisual] = useState(false);
-  const [observaciones, setObservaciones] = useState('');
+  const [observaciones, setObservaciones] = useState(student?.notas_clinicas || '');
   
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -49,7 +50,7 @@ export default function NewStudentModal({ onClose, onSuccess }: NewStudentModalP
       if (lateralidad === "Izquierda") lateralidadAPI = "ZURDO";
       if (lateralidad === "Ambidextro") lateralidadAPI = "AMBIDIESTRO";
 
-      await api.post('/students/', {
+      await api.put(`/students/${student.id}`, {
         nombres,
         apellidos,
         fecha_nacimiento: fechaNacimiento,
@@ -59,7 +60,7 @@ export default function NewStudentModal({ onClose, onSuccess }: NewStudentModalP
       onSuccess();
       onClose();
     } catch (error: any) {
-      let message = 'Error al registrar el estudiante';
+      let message = 'Error al actualizar el estudiante';
       if (error.response?.data?.detail) {
         if (Array.isArray(error.response.data.detail)) {
            message = error.response.data.detail.map((e: any) => `${e.loc?.join('.')} - ${e.msg}`).join(', ');
@@ -80,8 +81,8 @@ export default function NewStudentModal({ onClose, onSuccess }: NewStudentModalP
         <div className="flex justify-between items-center p-5 border-b border-border bg-primary/5 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
           <h2 className="text-xl font-bold text-primary flex items-center">
-            <Icon icon="mdi:account-plus" className="mr-2 text-secondary" />
-            Nuevo Estudiante
+            <Icon icon="mdi:account-edit" className="mr-2 text-secondary" />
+            Editar Estudiante
           </h2>
           <button onClick={onClose} className="text-text-muted hover:text-danger hover:bg-danger/10 p-1.5 rounded-lg transition-colors relative z-10">
             <Icon icon="mdi:close" className="text-2xl" />
@@ -109,7 +110,7 @@ export default function NewStudentModal({ onClose, onSuccess }: NewStudentModalP
           </div>
 
           {/* Columna Derecha: Formulario */}
-          <form onSubmit={handleSubmit} id="new-student-form" className="md:col-span-2 space-y-4">
+          <form onSubmit={handleSubmit} id="edit-student-form" className="md:col-span-2 space-y-4">
             
             <div className="grid grid-cols-1 gap-4">
               <div>
@@ -230,9 +231,9 @@ export default function NewStudentModal({ onClose, onSuccess }: NewStudentModalP
           <button onClick={onClose} type="button" className="px-5 py-2.5 border border-border bg-surface hover:bg-slate-50 text-text-muted rounded-xl text-sm font-bold transition-all shadow-sm">
             Cancelar
           </button>
-          <button type="submit" form="new-student-form" disabled={loading} className="px-5 py-2.5 bg-gradient-to-r from-secondary to-secondary-hover text-primary rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0">
+          <button type="submit" form="edit-student-form" disabled={loading} className="px-5 py-2.5 bg-gradient-to-r from-secondary to-secondary-hover text-primary rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0">
             {loading && <Icon icon="mdi:loading" className="animate-spin mr-2 text-lg" />}
-            Registrar Estudiante
+            Guardar Cambios
           </button>
         </div>
 

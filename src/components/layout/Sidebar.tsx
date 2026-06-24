@@ -59,7 +59,7 @@ export default function Sidebar() {
                     'flex items-center py-3.5 text-sm font-medium transition-all duration-200 border-l-4 overflow-hidden',
                     isCollapsed ? 'px-0 justify-center' : 'px-6',
                     isActive
-                      ? 'bg-primary/10 text-primary border-primary font-semibold'
+                      ? 'bg-secondary/10 text-primary border-secondary font-bold shadow-sm'
                       : clsx('text-text-muted border-transparent hover:bg-primary/5 hover:text-primary', !isCollapsed && 'hover:pl-7')
                   )
                 }

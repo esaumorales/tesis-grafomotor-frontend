@@ -124,7 +124,7 @@ export default function ConfigPage() {
         {/* Left Col: Menu / Info */}
         <div className="lg:col-span-4 flex flex-col gap-4">
           {/* User Preview Card */}
-          <div className="bg-surface rounded-2xl shadow-sm border border-border p-5 flex flex-col items-center text-center relative overflow-hidden group hover:shadow-md transition-shadow">
+          <div className="bg-surface rounded-2xl shadow-sm border border-border p-5 flex flex-col items-center text-center relative overflow-hidden group hover:shadow-md transition-shadow border-t-4 border-t-primary">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue-400/5 opacity-50 z-0"></div>
             <div className="w-20 h-20 bg-white rounded-full shadow-sm border-4 border-primary/10 flex items-center justify-center mb-4 z-10">
               <Icon icon="mdi:account-circle" className="text-6xl text-slate-300" />
@@ -136,8 +136,8 @@ export default function ConfigPage() {
             </span>
           </div>
 
-          <div className="bg-primary/5 border border-primary/20 rounded-2xl p-4 flex items-start">
-             <Icon icon="mdi:information-outline" className="text-primary text-xl mr-3 shrink-0" />
+          <div className="bg-secondary/10 border border-secondary/20 rounded-2xl p-4 flex items-start">
+             <Icon icon="mdi:information-outline" className="text-secondary text-xl mr-3 shrink-0" />
              <div>
                <h4 className="text-sm font-bold text-primary mb-1">Información Institucional</h4>
                <p className="text-xs text-slate-600 leading-relaxed">
@@ -151,8 +151,8 @@ export default function ConfigPage() {
         <div className="lg:col-span-8 flex flex-col gap-4">
           
           {/* Form: Profile */}
-          <div className="bg-surface rounded-2xl shadow-sm border border-border overflow-hidden">
-            <div className="px-5 py-3 border-b border-border bg-slate-50/50 flex items-center justify-between">
+          <div className="bg-surface rounded-2xl shadow-sm border border-border overflow-hidden border-t-4 border-t-primary">
+            <div className="px-5 py-3 border-b border-border bg-primary/5 flex items-center justify-between">
               <h3 className="font-bold text-text-main flex items-center text-sm uppercase tracking-wide">
                 <Icon icon="mdi:card-account-details-outline" className="mr-2 text-lg text-primary" />
                 Perfil de Usuario
@@ -193,7 +193,7 @@ export default function ConfigPage() {
                   <button 
                     type="submit" 
                     disabled={profileSaving}
-                    className="bg-primary hover:bg-primary-hover text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-md transition-all flex items-center disabled:opacity-50"
+                    className="bg-gradient-to-r from-primary to-primary-hover text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-md transition-all flex items-center disabled:opacity-50 hover:-translate-y-0.5 hover:shadow-lg"
                   >
                     {profileSaving ? <Icon icon="mdi:loading" className="animate-spin mr-2 text-lg" /> : <Icon icon="mdi:content-save-outline" className="mr-2 text-lg" />}
                     Guardar Cambios
@@ -204,8 +204,8 @@ export default function ConfigPage() {
           </div>
 
           {/* Form: Password */}
-          <div className="bg-surface rounded-2xl shadow-sm border border-border overflow-hidden">
-            <div className="px-6 py-4 border-b border-border bg-slate-50/50 flex items-center justify-between">
+          <div className="bg-surface rounded-2xl shadow-sm border border-border overflow-hidden border-t-4 border-t-primary">
+            <div className="px-6 py-4 border-b border-border bg-primary/5 flex items-center justify-between">
               <h3 className="font-bold text-text-main flex items-center text-sm uppercase tracking-wide">
                 <Icon icon="mdi:lock-outline" className="mr-2 text-lg text-primary" />
                 Cambiar Contraseña
@@ -256,7 +256,7 @@ export default function ConfigPage() {
                   <button 
                     type="submit"
                     disabled={pwdSaving}
-                    className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-md transition-all flex items-center disabled:opacity-50"
+                    className="bg-gradient-to-r from-secondary to-secondary-hover text-primary px-6 py-2.5 rounded-xl font-bold text-sm shadow-md transition-all flex items-center disabled:opacity-50 hover:-translate-y-0.5 hover:shadow-lg"
                   >
                     {pwdSaving ? <Icon icon="mdi:loading" className="animate-spin mr-2 text-lg" /> : <Icon icon="mdi:shield-check-outline" className="mr-2 text-lg" />}
                     Actualizar Contraseña

@@ -7,12 +7,14 @@ import RadarSkillsChart from '../components/student/RadarSkillsChart';
 import DiagnosisDonutChart from '../components/student/DiagnosisDonutChart';
 import NewEvaluationModal from '../components/modals/NewEvaluationModal';
 import EvaluationResultModal from '../components/modals/EvaluationResultModal';
+import EditStudentModal from '../components/modals/EditStudentModal';
 import api from '../services/api';
 
 export default function StudentProfilePage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [showNewEvaluation, setShowNewEvaluation] = useState(false);
+  const [showEditStudent, setShowEditStudent] = useState(false);
   const [selectedEvaluation, setSelectedEvaluation] = useState<any>(null);
   const [student, setStudent] = useState<any>(null);
   const [evaluations, setEvaluations] = useState<any[]>([]);
@@ -100,7 +102,7 @@ export default function StudentProfilePage() {
         </div>
         <button 
           onClick={() => setShowNewEvaluation(true)}
-          className="bg-primary hover:bg-primary-hover text-surface px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center hover:-translate-y-0.5"
+          className="bg-gradient-to-r from-secondary to-secondary-hover text-primary px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center hover:-translate-y-0.5"
         >
           <Icon icon="mdi:plus-circle-outline" className="mr-2 text-lg" />
           Nueva Evaluación
@@ -110,13 +112,19 @@ export default function StudentProfilePage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         {/* Foto y Acciones */}
-        <div className="bg-white border border-border shadow-sm p-6 rounded-2xl flex flex-col items-center hover-lift">
-          <h2 className="text-lg font-bold text-text-main w-full mb-6 text-center border-b border-border pb-3">Estudiante</h2>
-          <div className="w-32 h-32 bg-primary/5 border-2 border-dashed border-primary/30 rounded-full flex items-center justify-center text-primary/50 mb-6 relative overflow-hidden group">
-            <Icon icon="mdi:account-outline" className="text-6xl group-hover:scale-110 transition-transform" />
+        <div className="bg-white border border-border shadow-sm p-6 rounded-2xl flex flex-col items-center hover-lift border-t-4 border-t-secondary relative overflow-hidden">
+          {/* Fondo decorativo sutil */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-bl-full -z-0"></div>
+          
+          <h2 className="text-lg font-bold text-primary w-full mb-6 text-center border-b border-border pb-3 relative z-10 flex justify-center items-center gap-2">
+            <Icon icon="mdi:account" className="text-secondary" />
+            Estudiante
+          </h2>
+          <div className="w-32 h-32 bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-dashed border-primary/30 rounded-full flex items-center justify-center text-primary/70 mb-6 relative z-10 overflow-hidden group shadow-inner">
+            <Icon icon="mdi:account-outline" className="text-6xl group-hover:scale-110 transition-transform drop-shadow-sm" />
           </div>
-          <div className="flex gap-3 w-full justify-center mt-2">
-            <button className="flex items-center justify-center gap-2 flex-1 border border-border hover:border-primary hover:bg-primary/5 text-text-muted hover:text-primary py-2 rounded-xl text-sm font-semibold transition-all">
+          <div className="flex gap-3 w-full justify-center mt-2 relative z-10">
+            <button onClick={() => setShowEditStudent(true)} className="flex items-center justify-center gap-2 flex-1 border border-border hover:border-primary hover:bg-primary/5 text-text-muted hover:text-primary py-2 rounded-xl text-sm font-semibold transition-all">
               <Icon icon="mdi:pencil-outline" className="text-lg" />
               Editar
             </button>
@@ -138,8 +146,11 @@ export default function StudentProfilePage() {
         </div>
 
         {/* Datos Personales */}
-        <div className="md:col-span-2 bg-white border border-border shadow-sm p-6 rounded-2xl hover-lift">
-          <h2 className="text-lg font-bold text-text-main mb-6 border-b border-border pb-3">Datos Personales</h2>
+        <div className="md:col-span-2 bg-white border border-border shadow-sm p-6 rounded-2xl hover-lift border-t-4 border-t-primary">
+          <h2 className="text-lg font-bold text-primary mb-6 border-b border-border pb-3 flex items-center gap-2">
+            <Icon icon="mdi:card-account-details-outline" className="text-secondary text-xl" />
+            Datos Personales
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-6">
             <div>
               <p className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Nombres</p>
@@ -177,14 +188,17 @@ export default function StudentProfilePage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* Historial de Evaluaciones */}
-        <div className="bg-white border border-border shadow-sm rounded-2xl flex flex-col hover-lift overflow-hidden">
-          <div className="p-5 border-b border-border flex items-center justify-between">
-            <h2 className="text-lg font-bold text-text-main">Historial de Evaluaciones</h2>
+        <div className="bg-white border border-border shadow-sm rounded-2xl flex flex-col hover-lift overflow-hidden border-t-4 border-t-primary">
+          <div className="p-5 border-b border-border flex items-center justify-between bg-primary/5">
+            <h2 className="text-lg font-bold text-primary flex items-center gap-2">
+              <Icon icon="mdi:history" className="text-secondary text-xl" />
+              Historial de Evaluaciones
+            </h2>
           </div>
           <div className="overflow-x-auto overflow-y-auto max-h-[280px]">
             <table className="w-full text-left border-collapse relative">
-              <thead className="sticky top-0 z-10 bg-slate-50 border-y border-border">
-                <tr className="text-text-muted text-xs uppercase tracking-wider">
+              <thead className="sticky top-0 z-10 bg-primary text-white border-y border-primary">
+                <tr className="text-xs uppercase tracking-wider">
                   <th className="px-5 py-3 font-medium">Fecha</th>
                   <th className="px-5 py-3 font-medium">Hora</th>
                   <th className="px-5 py-3 font-medium">Can. Figuras</th>
@@ -207,11 +221,23 @@ export default function StudentProfilePage() {
                       <td className="px-5 py-3">{new Date(ev.fecha_evaluacion).toLocaleDateString()}</td>
                       <td className="px-5 py-3 text-text-muted">{new Date(ev.fecha_evaluacion).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
                       <td className="px-5 py-3">{ev.hojas?.length || 1} Hojas</td>
-                      <td className="px-5 py-3 font-medium">{ev.confianza_ia.toFixed(1)}%</td>
+                      <td className="px-5 py-3 font-medium">
+                        {(() => {
+                           const matchScore = ev.sugerencia_caso?.match(/VMI_SCORE=([^|]+)\|/);
+                           return matchScore ? matchScore[1] : ev.confianza_ia.toFixed(1) + "%";
+                        })()}
+                      </td>
                       <td className="px-5 py-3">
-                         <span className={`px-2.5 py-1 rounded-md text-xs font-bold ${ev.clase_predicha === 0 ? 'bg-success/10 text-success' : ev.clase_predicha === 1 ? 'bg-warning/10 text-warning' : 'bg-danger/10 text-danger'}`}>
-                           {ev.clase_predicha === 0 ? 'Normal' : ev.clase_predicha === 1 ? 'Riesgo Leve' : 'Riesgo Alto'}
-                         </span>
+                         {(() => {
+                           const matchCat = ev.sugerencia_caso?.match(/VMI_CAT=([^|]+)\|/);
+                           const vmiCat = matchCat ? matchCat[1] : (ev.clase_predicha === 0 ? 'Normal' : ev.clase_predicha === 1 ? 'Riesgo Leve' : 'Riesgo Alto');
+                           const colorClass = ev.clase_predicha === 0 ? 'bg-success/10 text-success' : ev.clase_predicha === 1 ? 'bg-warning/10 text-warning' : 'bg-danger/10 text-danger';
+                           return (
+                             <span className={`px-2.5 py-1 rounded-md text-xs font-bold whitespace-nowrap ${colorClass}`}>
+                               {vmiCat}
+                             </span>
+                           );
+                         })()}
                       </td>
                       <td className="px-5 py-3 relative min-w-[120px]">
                         {confirmDeleteId === ev.id && (
@@ -248,9 +274,12 @@ export default function StudentProfilePage() {
         </div>
 
         {/* Gráfico */}
-        <div className="bg-white border border-border shadow-sm p-5 rounded-2xl hover-lift relative">
+        <div className="bg-white border border-border shadow-sm p-5 rounded-2xl hover-lift relative border-t-4 border-t-accent">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-text-main">Evolución del Estudiante</h2>
+            <h2 className="text-lg font-bold text-primary flex items-center gap-2">
+              <Icon icon="mdi:chart-timeline-variant" className="text-accent text-xl" />
+              Evolución del Estudiante
+            </h2>
             <button 
               onClick={() => setInfoModal({
                 title: 'Evolución del Estudiante',
@@ -277,11 +306,11 @@ export default function StudentProfilePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Gráfico SHAP */}
-            <div className="bg-white border border-border shadow-sm p-6 rounded-2xl flex flex-col hover-lift relative">
+            <div className="bg-white border border-border shadow-sm p-6 rounded-2xl flex flex-col hover-lift relative border-t-4 border-t-primary">
               <div className="flex items-center justify-between mb-4">
                  <div className="flex items-center">
                    <Icon icon="mdi:brain" className="text-xl text-primary mr-2" />
-                   <h3 className="text-base font-bold text-text-main">Caracteristicas del Trazo</h3>
+                   <h3 className="text-base font-bold text-primary">Caracteristicas del Trazo</h3>
                  </div>
                  <button 
                    onClick={() => setInfoModal({
@@ -300,11 +329,11 @@ export default function StudentProfilePage() {
             </div>
 
             {/* Radar Habilidades */}
-            <div className="bg-white border border-border shadow-sm p-6 rounded-2xl flex flex-col hover-lift relative">
+            <div className="bg-white border border-border shadow-sm p-6 rounded-2xl flex flex-col hover-lift relative border-t-4 border-t-secondary">
               <div className="flex items-center justify-between mb-4">
                  <div className="flex items-center">
                    <Icon icon="mdi:radar" className="text-xl text-secondary mr-2" />
-                   <h3 className="text-base font-bold text-text-main">Perfil de Habilidades</h3>
+                   <h3 className="text-base font-bold text-primary">Perfil de Habilidades</h3>
                  </div>
                  <button 
                    onClick={() => setInfoModal({
@@ -323,11 +352,11 @@ export default function StudentProfilePage() {
             </div>
 
             {/* Pastel Diagnóstico */}
-            <div className="bg-white border border-border shadow-sm p-6 rounded-2xl flex flex-col hover-lift relative">
+            <div className="bg-white border border-border shadow-sm p-6 rounded-2xl flex flex-col hover-lift relative border-t-4 border-t-accent">
               <div className="flex items-center justify-between mb-4">
                  <div className="flex items-center">
                    <Icon icon="mdi:chart-donut" className="text-xl text-accent mr-2" />
-                   <h3 className="text-base font-bold text-text-main">Distribución</h3>
+                   <h3 className="text-base font-bold text-primary">Distribución</h3>
                  </div>
                  <button 
                    onClick={() => setInfoModal({
@@ -363,6 +392,16 @@ export default function StudentProfilePage() {
           student={student} 
           evaluation={selectedEvaluation} 
           onClose={() => setSelectedEvaluation(null)} 
+        />
+      )}
+      {showEditStudent && (
+        <EditStudentModal 
+          student={student} 
+          onClose={() => setShowEditStudent(false)} 
+          onSuccess={() => {
+            setShowEditStudent(false);
+            fetchData();
+          }} 
         />
       )}
 

@@ -63,7 +63,7 @@ export default function ReportsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         
         {/* Gráfico de Pastel: Riesgos */}
-        <div className="bg-surface rounded-2xl shadow-sm border border-border p-5 flex flex-col">
+        <div className="bg-surface rounded-2xl shadow-sm border border-border p-5 flex flex-col border-t-4 border-t-primary">
           <h3 className="font-bold text-text-main flex items-center text-sm uppercase tracking-wide mb-4">
             <Icon icon="mdi:chart-pie" className="mr-2 text-lg text-primary" />
             Distribución de Riesgos Actuales
@@ -101,7 +101,7 @@ export default function ReportsPage() {
         </div>
 
         {/* Gráfico de Barras: Actividad */}
-        <div className="bg-surface rounded-2xl shadow-sm border border-border p-5 flex flex-col">
+        <div className="bg-surface rounded-2xl shadow-sm border border-border p-5 flex flex-col border-t-4 border-t-secondary">
           <h3 className="font-bold text-text-main flex items-center text-sm uppercase tracking-wide mb-4">
             <Icon icon="mdi:chart-timeline-variant" className="mr-2 text-lg text-primary" />
             Actividad de Evaluaciones (6 Meses)
@@ -137,7 +137,7 @@ export default function ReportsPage() {
 
       {/* Gráfico Exclusivo Admin: Rendimiento Docente */}
       {isAdmin && data.evaluations_by_teacher && (
-        <div className="bg-surface rounded-2xl shadow-sm border border-border p-5 flex flex-col">
+        <div className="bg-surface rounded-2xl shadow-sm border border-border p-5 flex flex-col border-t-4 border-t-accent">
           <h3 className="font-bold text-text-main flex items-center text-sm uppercase tracking-wide mb-4">
             <Icon icon="mdi:teach" className="mr-2 text-lg text-primary" />
             Rendimiento por Docente (Evaluaciones Realizadas)
@@ -181,7 +181,7 @@ export default function ReportsPage() {
       )}
 
       {/* Tabla Crítica */}
-      <div className="bg-surface rounded-2xl shadow-sm border border-border overflow-hidden">
+      <div className="bg-surface rounded-2xl shadow-sm border border-border overflow-hidden border-t-4 border-t-danger">
         <div className="px-5 py-3 border-b border-border bg-danger/5 flex items-center justify-between">
           <h3 className="font-bold text-danger flex items-center text-sm uppercase tracking-wide">
             <Icon icon="mdi:alert" className="mr-2 text-lg" />

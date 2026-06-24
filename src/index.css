@@ -5,26 +5,26 @@
   /* Tipografía */
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
-  /* Colores Semánticos Premium */
-  --color-primary: #3b82f6;      /* Azul vibrante principal */
-  --color-primary-hover: #2563eb; 
+  /* Colores Semánticos Premium - Estilo "Educativo Vibrante" */
+  --color-primary: #003B5C;      /* Azul oscuro institucional del logo */
+  --color-primary-hover: #002B44; 
   
-  --color-secondary: #0ea5e9;    /* Turquesa/Cian de soporte */
-  --color-secondary-hover: #0284c7;
+  --color-secondary: #FDB813;    /* Amarillo/naranja del logo */
+  --color-secondary-hover: #E5A511;
 
-  --color-accent: #f43f5e;       /* Rosa/Magenta para gráficos y alertas (estilo SHAP) */
-  --color-accent-hover: #e11d48;
+  --color-accent: #00B4D8;       /* Celeste/Teal vibrante para resaltar detalles (da mucha vida) */
+  --color-accent-hover: #0096C7;
 
-  --color-success: #10b981;      /* Verde para resultados Normales */
-  --color-warning: #f59e0b;      /* Amarillo para Riesgo Leve */
-  --color-danger: #ef4444;       /* Rojo para Riesgo Alto */
+  --color-success: #10B981;      /* Verde esmeralda para resultados positivos */
+  --color-warning: #F59E0B;      /* Amarillo ámbar para alertas o cuidado */
+  --color-danger: #EF4444;       /* Rojo vivo para riesgos o errores */
 
-  --color-background: #f8fafc;   /* Gris ultra suave con toque azulado para el fondo global */
-  --color-surface: #ffffff;      /* Blanco puro para tarjetas */
+  --color-background: #F8FAFC;   /* Fondo muy limpio, gris azulado extra claro */
+  --color-surface: #ffffff;      /* Blanco puro para tarjetas, crea contraste "plano" */
   
-  --color-text-main: #0f172a;    /* Casi negro para títulos legibles */
-  --color-text-muted: #64748b;   /* Gris para subtítulos y notas */
-  --color-border: #e2e8f0;       /* Bordes muy sutiles */
+  --color-text-main: #1E293B;    /* Un azul/gris muy oscuro en lugar de negro (menos agresivo a la vista) */
+  --color-text-muted: #64748b;   /* Gris suave para textos secundarios */
+  --color-border: #E2E8F0;       /* Bordes definidos pero sutiles */
 }
 
 /* Reseteo básico y aplicación de estilos globales */

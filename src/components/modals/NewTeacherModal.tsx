@@ -130,3 +130,4 @@ export default function NewTeacherModal({ isOpen, onClose, onSuccess }: Props) {
     </div>
   );
 }
+

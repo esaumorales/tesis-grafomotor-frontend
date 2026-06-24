@@ -22,30 +22,30 @@ export default function EvaluationResultModal({ student, evaluation, onClose }: 
     : [evaluation]; // Retrocompatibilidad: tratar la evaluación antigua como 1 hoja
 
   const VMI_REFERENCES = [
-    { name: 'Línea Vertical', file: '07_linea_vertical.png', icon: 'mdi:minus-vertical' },
-    { name: 'Línea Horizontal', file: '08_linea_horizontal.png', icon: 'mdi:minus' },
-    { name: 'Círculo', file: '09_circulo.png', icon: 'mdi:circle-outline' },
-    { name: 'Cruz', file: '10_cruz_horizontal_vertical.png', icon: 'mdi:plus' },
-    { name: 'Línea Inclinada', file: '11_linea_derecha_obliquea.png', icon: 'mdi:slash-forward' },
-    { name: 'Cuadrado', file: '12_cuadrado.png', icon: 'mdi:square-outline' },
-    { name: 'Línea Inclinada 2', file: '13_linea_derecha_obliquea.png', icon: 'mdi:slash-forward' },
-    { name: 'Cruz Inclinada', file: '14_cruz_obliquea.png', icon: 'mdi:close' },
-    { name: 'Triángulo', file: '15_triangulo.png', icon: 'mdi:triangle-outline' },
-    { name: 'Cuadrado Abierto', file: '16_cuadrado_abierto_circulo.png', icon: 'mdi:shape-outline' },
-    { name: '3 Líneas Cruz', file: '17_tres_lineas_cruz.png', icon: 'mdi:asterisk' },
-    { name: 'Flechas', file: '18_flechas_direccionales.png', icon: 'mdi:arrow-all' },
-    { name: 'Anillos 2D', file: '19_dos_dimensionales_anillos.png', icon: 'mdi:infinity' },
-    { name: 'Círculos y Triángulo', file: '20_seis_circulos_triangulo.png', icon: 'mdi:triangle-outline' },
-    { name: 'Círculo y Cuadrado', file: '21_circulo_cuadrado_inclinado.png', icon: 'mdi:circle-outline' },
-    { name: 'Diamante Vert.', file: '22_diamante_vertical.png', icon: 'mdi:cards-diamond-outline' },
-    { name: 'Triángulo Inc.', file: '23_triangulo_inclinado.png', icon: 'mdi:triangle-outline' },
-    { name: '8 Puntos', file: '24_ocho_puntos_circulos.png', icon: 'mdi:dots-grid' },
-    { name: 'Hexágono', file: '25_wertheimer_hexagonal.png', icon: 'mdi:hexagon-outline' },
-    { name: 'Diamante Horiz.', file: '26_diamante_horizontal.png', icon: 'mdi:cards-diamond-outline' },
-    { name: 'Anillos 3D', file: '27_tres_dimensionales_anillos.png', icon: 'mdi:infinity' },
-    { name: 'Cubo', file: '28_cubo_de_necker.png', icon: 'mdi:cube-outline' },
-    { name: 'Caja Cónica', file: '29_caja_conica.png', icon: 'mdi:package-variant-closed' },
-    { name: 'Estrella 3D', file: '30_tres_dimensional_estrella.png', icon: 'mdi:star-outline' },
+    { name: 'Línea Vertical',          file: '07_linea_vertical.png',             icon: 'mdi:minus-vertical' },
+    { name: 'Línea Horizontal',        file: '08_linea_horizontal.png',            icon: 'mdi:minus' },
+    { name: 'Círculo',                 file: '09_circulo.png',                     icon: 'mdi:circle-outline' },
+    { name: 'Cruz',                    file: '10_cruz_horizontal_vertical.png',    icon: 'mdi:plus' },
+    { name: 'Oblicua Derecha',         file: '11_linea_derecha_obliquea.png',      icon: 'mdi:slash-forward' },
+    { name: 'Cuadrado',                file: '12_cuadrado.png',                    icon: 'mdi:square-outline' },
+    { name: 'Oblicua Izquierda',       file: '13_linea_derecha_obliquea.png',      icon: 'mdi:slash-forward' },
+    { name: 'Cruz Oblicua',            file: '14_cruz_obliquea.png',               icon: 'mdi:close' },
+    { name: 'Triángulo',               file: '15_triangulo.png',                   icon: 'mdi:triangle-outline' },
+    { name: 'Cuadrado+Círculo',        file: '16_cuadrado_abierto_circulo.png',    icon: 'mdi:shape-outline' },
+    { name: '3 Líneas en Cruz',        file: '17_tres_lineas_cruz.png',            icon: 'mdi:asterisk' },
+    { name: 'Flechas Direccionales',   file: '18_flechas_direccionales.png',       icon: 'mdi:arrow-all' },
+    { name: 'Anillos 2D',              file: '19_dos_dimensionales_anillos.png',   icon: 'mdi:infinity' },
+    { name: 'Círculos+Triángulo',      file: '20_seis_circulos_triangulo.png',     icon: 'mdi:triangle-outline' },
+    { name: 'Círculo+Cuadrado Inc.',   file: '21_circulo_cuadrado_inclinado.png',  icon: 'mdi:circle-outline' },
+    { name: 'Diamante Vertical',       file: '22_diamante_vertical.png',           icon: 'mdi:cards-diamond-outline' },
+    { name: 'Triángulo Inclinado',     file: '23_triangulo_inclinado.png',         icon: 'mdi:triangle-outline' },
+    { name: '8 Puntos y Círculos',     file: '24_ocho_puntos_circulos.png',        icon: 'mdi:dots-grid' },
+    { name: 'Hexágono Wertheimer',     file: '25_wertheimer_hexagonal.png',        icon: 'mdi:hexagon-outline' },
+    { name: 'Diamante Horizontal',     file: '26_diamante_horizontal.png',         icon: 'mdi:cards-diamond-outline' },
+    { name: 'Anillos 3D',              file: '27_tres_dimensionales_anillos.png',  icon: 'mdi:infinity' },
+    { name: 'Cubo de Necker',          file: '28_cubo_de_necker.png',              icon: 'mdi:cube-outline' },
+    { name: 'Caja Cónica',             file: '29_caja_conica.png',                 icon: 'mdi:package-variant-closed' },
+    { name: 'Estrella 3D',             file: '30_tres_dimensional_estrella.png',   icon: 'mdi:star-outline' },
   ];
 
   const getReferenceImage = (filename: string) => {
@@ -95,42 +95,23 @@ export default function EvaluationResultModal({ student, evaluation, onClose }: 
 
   const currentFig = allFigures[selectedFigureIndex] || allFigures[0];
 
-  // El backend no calcula "Precisión" ni "Velocidad" de forma explícita, sino probabilidades clínicas.
-  // Por la "Opción B", inferimos de forma determinista estos valores para que tengan sentido clínico.
-  const clase = currentFig.clase; // 0: Normal, 1: Leve, 2: Alto
-  const confianza = currentFig.confianza || 80; // 0 - 100
+  // Detalles reales por trazo enviados por el backend
+  const detallesTrazos: any[] = evaluation.pesos_indicadores?.detalles_trazos || [];
+  const detalle = detallesTrazos[selectedFigureIndex] || null;
 
-  let precisionVal = 0;
-  let continuidadVal = 0;
-  let velocidadVal = 0;
+  // Confianza e indicadores reales desde el backend
+  const confianzaReal: number = detalle?.confianza ?? 0;
+  const acierto: boolean = detalle ? detalle.acierto === 1 : true;
+  const nombreEsperado: string = detalle?.nombre_esperado || currentFig.shapeName;
+  const figuraPredicha: string = detalle?.figura_predicha || "";
 
-  if (clase === 0) {
-    // Normal: Altos puntajes (70% - 95%)
-    // A mayor confianza en que es normal, más altos los puntajes.
-    precisionVal = Math.round(75 + (confianza * 0.20));
-    continuidadVal = Math.round(70 + (confianza * 0.25));
-    velocidadVal = Math.round(65 + (confianza * 0.30));
-  } else if (clase === 1) {
-    // Riesgo Leve: Puntajes medios (40% - 69%)
-    // A mayor confianza de que hay riesgo, más BAJOS los puntajes.
-    precisionVal = Math.round(69 - (confianza * 0.25));
-    continuidadVal = Math.round(65 - (confianza * 0.20));
-    velocidadVal = Math.round(60 - (confianza * 0.15));
-  } else {
-    // Riesgo Alto: Puntajes bajos (10% - 39%)
-    // A mayor confianza de riesgo alto, MÁS BAJOS los puntajes.
-    precisionVal = Math.round(39 - (confianza * 0.20));
-    continuidadVal = Math.round(35 - (confianza * 0.15));
-    velocidadVal = Math.round(30 - (confianza * 0.10));
-  }
+  // Indicadores derivados de la confianza real del trazo
+  const precisionVal  = Math.max(5, Math.min(99, acierto ? Math.round(60 + confianzaReal * 0.35) : Math.round(confianzaReal * 0.55)));
+  const continuidadVal = Math.max(5, Math.min(99, acierto ? Math.round(55 + confianzaReal * 0.38) : Math.round(confianzaReal * 0.50)));
+  const velocidadVal  = Math.max(5, Math.min(99, acierto ? Math.round(50 + confianzaReal * 0.42) : Math.round(confianzaReal * 0.45)));
 
-  // Asegurar límites por seguridad
-  precisionVal = Math.max(5, Math.min(99, precisionVal));
-  continuidadVal = Math.max(5, Math.min(99, continuidadVal));
-  velocidadVal = Math.max(5, Math.min(99, velocidadVal));
-
-  const claseText = currentFig.clase === 0 ? "Normal" : currentFig.clase === 1 ? "En Riesgo Leve" : "Atención Requerida";
-  const claseColor = currentFig.clase === 0 ? "text-green-600" : currentFig.clase === 1 ? "text-yellow-600" : "text-red-600";
+  const claseText = acierto ? "Correcto" : "Necesita Refuerzo";
+  const claseColor = acierto ? "text-green-600" : "text-red-600";
 
   const getBaseUrl = () => {
     const url = api.defaults.baseURL || "http://127.0.0.1:8000/api/v1";
@@ -142,18 +123,21 @@ export default function EvaluationResultModal({ student, evaluation, onClose }: 
       <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-7xl max-h-[95vh] overflow-y-auto flex flex-col border border-border">
 
         {/* Header */}
-        <div className="flex justify-between items-center p-4 border-b border-border bg-surface sticky top-0 z-10">
-          <div className="flex items-center">
-            <Icon icon="mdi:account-circle" className="text-[36px] text-primary mr-3 drop-shadow-sm" />
+        <div className="flex justify-between items-center p-4 border-b border-border bg-primary/5 sticky top-0 z-20 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
+          <div className="flex items-center relative z-10">
+            <Icon icon="mdi:account-circle" className="text-[36px] text-secondary mr-3 drop-shadow-sm" />
             <div>
-              <h2 className="text-lg font-bold text-text-main leading-tight">{student.nombres} {student.apellidos}</h2>
-              <p className="text-xs font-medium text-text-muted">{calculateAge(student.fecha_nacimiento)} años <span className="mx-1">•</span> {allFigures.length} Figuras Evaluadas</p>
+              <h2 className="text-lg font-bold text-primary leading-tight">{student.nombres} {student.apellidos}</h2>
+              <p className="text-xs font-bold text-text-muted">{calculateAge(student.fecha_nacimiento)} años <span className="mx-1 text-secondary">•</span> {allFigures.length} Figuras Evaluadas</p>
             </div>
           </div>
-          <div className="flex items-center gap-5">
-            <div className="text-right bg-primary/5 px-3 py-1.5 rounded-lg border border-primary/10">
-              <p className="text-[10px] font-bold text-text-muted uppercase tracking-wider">Puntaje Global VMI</p>
-              <p className="text-xl font-black text-primary leading-none mt-0.5">{evaluation.confianza_ia.toFixed(1)}%</p>
+          <div className="flex items-center gap-5 relative z-10">
+            <div className="text-right bg-secondary/10 px-3 py-1.5 rounded-lg border border-secondary/20 shadow-sm">
+              <p className="text-[10px] font-black text-primary uppercase tracking-wider">Puntaje Global VMI</p>
+              <p className="text-xl font-black text-primary leading-none mt-0.5">
+                {evaluation.confianza_ia != null ? Math.round(evaluation.confianza_ia) : '--'}
+              </p>
             </div>
             <button onClick={onClose} className="text-text-muted hover:text-danger hover:bg-danger/10 p-2 rounded-xl transition-colors">
               <Icon icon="mdi:close" className="text-xl" />
@@ -168,9 +152,9 @@ export default function EvaluationResultModal({ student, evaluation, onClose }: 
           <div className="flex flex-col gap-5 h-[540px]">
 
             <div className="flex-1 flex flex-col gap-4">
-              <div className="bg-surface border border-border shadow-sm rounded-2xl p-5 flex flex-col hover-lift transition-all h-full">
+              <div className="bg-surface border border-border shadow-sm rounded-2xl p-5 flex flex-col hover-lift transition-all h-full border-t-4 border-t-primary">
                 <h3 className="text-xs font-bold text-text-main mb-4 border-b border-border pb-2 flex items-center justify-center gap-2 uppercase tracking-wide">
-                  <Icon icon="mdi:compare" className="text-primary text-base" />
+                  <Icon icon="mdi:compare" className="text-secondary text-base" />
                   Comparación Visual
                 </h3>
 
@@ -257,7 +241,7 @@ export default function EvaluationResultModal({ student, evaluation, onClose }: 
                   <button
                     key={i}
                     onClick={() => setSelectedFigureIndex(i)}
-                    className={`min-w-[90px] p-2 border-2 rounded-xl transition-all flex flex-col items-center text-center shadow-sm shrink-0 ${i === selectedFigureIndex ? 'border-primary bg-primary/10 text-primary scale-105 shadow-md' : 'border-border bg-surface text-text-muted hover:border-primary/40 hover:bg-primary/5 hover:text-text-main'}`}
+                    className={`min-w-[90px] p-2 border-2 rounded-xl transition-all flex flex-col items-center text-center shadow-sm shrink-0 ${i === selectedFigureIndex ? 'border-secondary bg-secondary/10 text-primary scale-105 shadow-md' : 'border-border bg-surface text-text-muted hover:border-secondary/40 hover:bg-secondary/5 hover:text-text-main'}`}
                   >
                     {fig.referenceFile ? (
                       <img 
@@ -287,47 +271,55 @@ export default function EvaluationResultModal({ student, evaluation, onClose }: 
                   Peso de Indicadores (Hoja {currentFig.hojaIndex + 1})
                 </h3>
                 <div className="space-y-4">
-
                   <ProgressBar
                     label="Precisión del trazo"
                     percentage={precisionVal}
                     levelText={precisionVal > 70 ? "Alto" : precisionVal > 40 ? "Medio" : "Bajo"}
                     colorType={precisionVal > 70 ? "green" : precisionVal > 40 ? "yellow" : "red"}
                   />
-
                   <ProgressBar
                     label="Continuidad"
                     percentage={continuidadVal}
                     levelText={continuidadVal > 70 ? "Alto" : continuidadVal > 40 ? "Medio" : "Bajo"}
                     colorType={continuidadVal > 70 ? "green" : continuidadVal > 40 ? "yellow" : "red"}
                   />
-
                   <ProgressBar
                     label="Velocidad"
                     percentage={velocidadVal}
                     levelText={velocidadVal > 70 ? "Alto" : velocidadVal > 40 ? "Medio" : "Bajo"}
                     colorType={velocidadVal > 70 ? "green" : velocidadVal > 40 ? "yellow" : "red"}
                   />
-
                 </div>
-
                 <div className="mt-5 flex justify-between items-center text-[10px] text-text-muted border-t border-border pt-3 bg-slate-50/50 -mx-5 px-5 -mb-5 pb-5 rounded-b-2xl">
                   <span className="font-semibold uppercase tracking-wider">Veredicto de la Hoja {currentFig.hojaIndex + 1}:</span>
-                  <span className={`font-black text-xs px-2.5 py-1 rounded-md ${currentFig.clase === 0 ? "bg-success/10 text-success" : currentFig.clase === 1 ? "bg-warning/10 text-warning" : "bg-danger/10 text-danger"}`}>
-                    {claseText} ({currentFig.confianza?.toFixed(1)}%)
+                  <span className={`font-black text-xs px-2.5 py-1 rounded-md ${acierto ? "bg-success/10 text-success" : "bg-danger/10 text-danger"}`}>
+                    {claseText} ({confianzaReal.toFixed(1)}% confianza IA)
                   </span>
                 </div>
-              </div>
+                </div>
 
-              {/* Sugerencia del Caso */}
+              {/* Sugerencia del Caso o Trazo Específico */}
               <div className="bg-primary/5 border border-primary/20 shadow-sm rounded-2xl p-5 flex-1 overflow-y-auto hover-lift transition-all">
                 <h3 className="text-xs font-bold text-primary mb-3 flex items-center border-b border-primary/20 pb-2 uppercase tracking-wide">
                   <Icon icon="mdi:lightbulb-on-outline" className="mr-2 text-base" />
-                  Sugerencia General del Caso
+                  {evaluation.pesos_indicadores?.narrativas_trazos ? "Sugerencia Específica del Trazo" : "Sugerencia General del Caso"}
                 </h3>
+                {/* Explicación XAI si está disponible */}
+                {evaluation.pesos_indicadores?.xai_explicaciones?.[selectedFigureIndex] && (
+                  <div className={`mb-3 p-3 rounded-xl border text-xs font-semibold ${acierto ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
+                    {evaluation.pesos_indicadores.xai_explicaciones[selectedFigureIndex].explicacion_corta}
+                  </div>
+                )}
                 <p className="text-[13px] text-text-main leading-relaxed text-justify whitespace-pre-wrap font-medium">
-                  {evaluation.sugerencia_caso}
+                  {evaluation.pesos_indicadores?.narrativas_trazos?.[selectedFigureIndex]
+                    || (evaluation.sugerencia_caso?.split('||').pop() || evaluation.sugerencia_caso)}
                 </p>
+                {/* Consejo XAI */}
+                {evaluation.pesos_indicadores?.xai_explicaciones?.[selectedFigureIndex]?.consejo && (
+                  <p className="mt-3 text-[12px] text-primary/80 italic border-t border-primary/10 pt-2">
+                    {evaluation.pesos_indicadores.xai_explicaciones[selectedFigureIndex].consejo}
+                  </p>
+                )}
               </div>
 
             </div>
@@ -335,6 +327,9 @@ export default function EvaluationResultModal({ student, evaluation, onClose }: 
           </div>
 
         </div>
+
+
       </div>
   );
 }
+

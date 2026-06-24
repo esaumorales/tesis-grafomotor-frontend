@@ -108,11 +108,11 @@ export default function NewEvaluationModal({ student, onClose }: NewEvaluationMo
       <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col border border-border my-auto animate-fade-in">
         
         {/* Header */}
-        <div className="flex flex-col p-6 border-b border-border bg-background/30 relative shrink-0">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/80 to-blue-400"></div>
+        <div className="flex flex-col p-6 border-b border-border bg-primary/5 relative shrink-0">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold text-text-main flex items-center">
-              <Icon icon="mdi:file-document-plus-outline" className="text-primary mr-2 text-2xl" />
+            <h2 className="text-xl font-bold text-primary flex items-center">
+              <Icon icon="mdi:file-document-plus-outline" className="text-secondary mr-2 text-2xl" />
               Nueva Evaluación Grafomotora
             </h2>
             <button onClick={onClose} className="p-1.5 rounded-lg text-text-muted hover:text-danger hover:bg-danger/10 transition-colors">
@@ -139,7 +139,7 @@ export default function NewEvaluationModal({ student, onClose }: NewEvaluationMo
           {/* Columna Izquierda: Carga de Imagen */}
           <div className="flex flex-col h-full">
             <h3 className="text-sm font-bold text-text-main mb-4 flex items-center">
-              <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-2 text-xs">1</div>
+              <div className="w-6 h-6 rounded-full bg-secondary text-primary font-black flex items-center justify-center mr-2 text-xs shadow-sm">1</div>
               Subir Dibujo
             </h3>
             
@@ -180,7 +180,7 @@ export default function NewEvaluationModal({ student, onClose }: NewEvaluationMo
               <button 
                 onClick={handleAnalyze} 
                 disabled={isAnalyzing}
-                className="mt-5 bg-primary hover:bg-primary-hover text-white w-full py-3 rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg disabled:opacity-70 flex justify-center items-center hover:-translate-y-0.5"
+                className="mt-5 bg-gradient-to-r from-primary to-primary-hover text-white w-full py-3 rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg disabled:opacity-70 flex justify-center items-center hover:-translate-y-0.5"
               >
                 {isAnalyzing ? (
                   <><Icon icon="mdi:loading" className="animate-spin mr-2 text-xl" /> Procesando con IA...</>
@@ -194,7 +194,7 @@ export default function NewEvaluationModal({ student, onClose }: NewEvaluationMo
           {/* Columna Derecha: Resultados de IA */}
           <div className="flex flex-col h-full border-t lg:border-t-0 lg:border-l border-border pt-6 lg:pt-0 lg:pl-8">
             <h3 className="text-sm font-bold text-text-main mb-4 flex items-center">
-              <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-2 text-xs">2</div>
+              <div className="w-6 h-6 rounded-full bg-secondary text-primary font-black flex items-center justify-center mr-2 text-xs shadow-sm">2</div>
               Resultados de la IA
             </h3>
             
@@ -217,18 +217,28 @@ export default function NewEvaluationModal({ student, onClose }: NewEvaluationMo
               <div className="flex flex-col gap-4 flex-1 overflow-y-auto pr-2" style={{ scrollbarWidth: 'thin' }}>
                 <div className="bg-surface rounded-2xl p-5 border border-border shadow-sm flex flex-col items-center relative overflow-hidden">
                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -z-10"></div>
-                   <p className="text-[10px] text-text-muted uppercase tracking-widest font-extrabold mb-2">Diagnóstico Predicho</p>
-                   <h4 className={`text-2xl font-black mb-1 ${aiResult.clase_predicha === 0 ? "text-success" : aiResult.clase_predicha === 1 ? "text-warning" : "text-danger"}`}>
-                     {aiResult.clase_predicha === 0 ? "Normal" : aiResult.clase_predicha === 1 ? "Riesgo Leve" : "Riesgo Alto"}
-                   </h4>
-                   <p className="text-xs font-semibold text-text-muted bg-slate-100 px-3 py-1 rounded-full border border-border">Confianza de IA: <span className="font-bold text-text-main">{aiResult.confianza_general.toFixed(1)}%</span></p>
+                   <p className="text-[10px] text-text-muted uppercase tracking-widest font-extrabold mb-2">Diagnóstico VMI Predicho</p>
+                   {(() => {
+                     // Extraer VMI_CAT de la sugerencia si existe
+                     const match = aiResult.sugerencia_caso.match(/VMI_CAT=([^|]+)\|/);
+                     const vmiCat = match ? match[1] : (aiResult.clase_predicha === 0 ? "Normal" : aiResult.clase_predicha === 1 ? "Riesgo Leve" : "Riesgo Alto");
+                     const colorClass = aiResult.clase_predicha === 0 ? "text-success" : aiResult.clase_predicha === 1 ? "text-warning" : "text-danger";
+                     return <h4 className={`text-xl text-center font-black mb-1 ${colorClass}`}>{vmiCat}</h4>;
+                   })()}
+                   {(() => {
+                     const matchScore = aiResult.sugerencia_caso.match(/VMI_SCORE=([^|]+)\|/);
+                     const score = matchScore ? matchScore[1] : aiResult.confianza_general.toFixed(1);
+                     return <p className="text-xs font-semibold text-text-muted bg-slate-100 px-3 py-1 rounded-full border border-border">Puntuación Estándar: <span className="font-bold text-text-main">{score}</span></p>;
+                   })()}
                 </div>
 
                 <div className="bg-primary/5 p-5 rounded-2xl border border-primary/20 shadow-sm">
                   <p className="text-xs font-bold text-primary mb-2 flex items-center uppercase tracking-wider">
                     <Icon icon="mdi:lightbulb-on-outline" className="mr-1.5 text-lg" /> Sugerencia de la IA
                   </p>
-                  <p className="text-sm text-text-main leading-relaxed font-medium">{aiResult.sugerencia_caso}</p>
+                  <p className="text-sm text-text-main leading-relaxed font-medium">
+                    {aiResult.sugerencia_caso.split('||').pop()}
+                  </p>
                 </div>
 
                 <div className="flex-1 flex flex-col mt-2">
@@ -254,7 +264,7 @@ export default function NewEvaluationModal({ student, onClose }: NewEvaluationMo
           <button 
             onClick={handleSave}
             disabled={!aiResult || isSaving}
-            className="px-6 py-2.5 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary-hover transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center"
+            className="px-6 py-2.5 bg-gradient-to-r from-secondary to-secondary-hover text-primary rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center hover:-translate-y-0.5"
           >
             {isSaving && <Icon icon="mdi:loading" className="animate-spin mr-2 text-lg" />}
             {isSaving ? 'Guardando...' : 'Guardar Resultados'}
@@ -265,3 +275,4 @@ export default function NewEvaluationModal({ student, onClose }: NewEvaluationMo
     </div>
   );
 }
+
